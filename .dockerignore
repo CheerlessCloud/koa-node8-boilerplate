@@ -23,9 +23,6 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
 # Dependency directories
 node_modules/
 
@@ -49,9 +46,6 @@ typings/
 
 # dotenv environment variables file
 .env
-
-# compiled code from babel
-dist
 
 # WebStorm IDE
 .idea/

@@ -9,10 +9,12 @@ node_js:
 notifications:
   email:
     recipients:
+      # replace with your e-mail
       - nnsceg@gmail.com
     on_success: never
     on_failure: always
 
+# uncomment this if you want to use semantic-release
 # branches:
 #  except:
 #    - /^v\d+\.\d+\.\d+$/
@@ -20,9 +22,8 @@ notifications:
 before_script:
   - npm prune
 script:
-  - npm run build
   - npm run cover
 after_success:
-  - npm run report-coverage
+ - npm run report-coverage
 # uncomment this if you want publish package to npm
 #  - npm run semantic-release

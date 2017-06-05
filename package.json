@@ -2,7 +2,10 @@
   "name": "koa-node8-boilerplate",
   "version": "0.0.0-development",
   "description": "Boilerplate for NodeJS HTTP RESTful API based on Koa and koa-router",
-  "main": "dist/index.js",
+  "main": "dist/src/http-server.js",
+  "bin": {
+    "koa-http-server": "./dist/bin/http-server"
+  },
   "repository": "git@github.com:TeslaCtroitel/koa-node8-boilerplate.git",
   "author": "EnRoute <nnsceg@gmail.com>",
   "license": "MIT",
@@ -17,77 +20,190 @@
     "node8"
   ],
   "scripts": {
-    "test": "npm run cover",
-    "posttest": "nyc report --reporter=lcov",
-    "test:dev": "ava --watch",
-    "cover": "nyc ava",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint src config bin",
-    "lint:fix": "eslint --fix src config bin",
-    "lint-staged": "lint-staged",
-    "commit": "git-cz",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "prebuild": "rimraf ./dist",
+    "build": "babel . -d ./dist/ -s --ignore node_modules,test.js,spec.js,coverage,dist,.nyc_output",
+    "start": "node ./dist/bin/http-server.js",
+    "start:dev": "node --require babel-register ./bin/http-server.js",
+    "start:debug": "node --inspect --inspect-brk --require babel-register ./bin/http-server.js",
+    "test": "cross-env NODE_ENV=test ava",
+    "test:dev": "cross-env NODE_ENV=test ava --watch",
+    "test:debug": "cross-env NODE_ENV=test node --inspect --inspect-brk --require babel-register node_modules/ava/profile.js ",
+    "cover": "cross-env NODE_ENV=test nyc ava",
+    "postcover": "nyc report --reporter=lcov",
+    "report-coverage": "catw coverage/lcov.info | coveralls",
+    "lint": "eslint --ext json --ext js .",
+    "lint:fix": "eslint --ext json --ext js --fix .",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "precommit": "lint-staged && npm run cover"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "bluebird": "^3.5.0",
+    "bunyan": "^1.8.12",
+    "cross-env": "^5.0.5",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "twconf": "^0.5.0"
   },
   "devDependencies": {
     "@bubltechnology/customizable-commit-analyzer": "^1.0.2-0",
-    "ava": "^0.19.1",
-    "commitizen": "^2.9.6",
+    "ava": "^0.21.0",
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "bunyan-debug-stream": "^1.0.8",
+    "catw": "^1.0.1",
     "coveralls": "^2.13.1",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.3.0",
-    "lint-staged": "^3.5.0",
-    "nyc": "^11.0.2",
-    "pre-commit": "^1.2.2",
-    "semantic-release": "^6.3.6"
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-import-resolver-babel-module": "^3.0.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsdoc": "^3.1.2",
+    "eslint-plugin-json": "^1.2.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.3",
+    "nyc": "^11.1.0",
+    "rimraf": "^2.6.1",
+    "semantic-release": "^6.3.6",
+    "supertest": "^3.0.0"
   },
   "engines": {
-    "node": ">=7.6.0"
+    "node": ">=8.2.0"
   },
   "eslintConfig": {
     "root": true,
     "extends": "eslint-config-airbnb-base",
+    "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": "2017"
+      "sourceType": "module",
+      "allowImportExportEverywhere": false,
+      "codeFrame": false
     },
     "env": {
-      "node": true,
-      "commonjs": true
+      "node": true
     },
     "rules": {
-      "strict": 0,
-      "no-restricted-syntax": "off"
+      "strict": "error",
+      "no-restricted-syntax": "off",
+      "babel/new-cap": 1,
+      "babel/no-invalid-this": 1,
+      "babel/semi": 1,
+      "jsdoc/check-param-names": 1,
+      "jsdoc/check-tag-names": 1,
+      "jsdoc/check-types": 1,
+      "jsdoc/newline-after-description": 1,
+      "jsdoc/require-description-complete-sentence": 1,
+      "jsdoc/require-example": 0,
+      "jsdoc/require-hyphen-before-param-description": 1,
+      "jsdoc/require-param": 1,
+      "jsdoc/require-param-description": 1,
+      "jsdoc/require-param-type": "error",
+      "jsdoc/require-returns-description": 1,
+      "jsdoc/require-returns-type": 1
+    },
+    "plugins": [
+      "json",
+      "jsdoc",
+      "babel"
+    ],
+    "settings": {
+      "import/core-modules": [
+        "#src",
+        "#config",
+        "#libs"
+      ],
+      "import/resolver": {
+        "babel-module": {}
+      }
     }
   },
+  "babel": {
+    "presets": [
+      "stage-0",
+      [
+        "env",
+        {
+          "targets": {
+            "node": "8"
+          },
+          "useBuiltIns": "usage",
+          "exclude": [
+            "transform-regenerator",
+            "transform-async-to-generator"
+          ]
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "."
+          ],
+          "alias": {
+            "#config": "./config",
+            "#libs": "./src/libs",
+            "#src": "./src"
+          }
+        }
+      ]
+    ]
+  },
   "ava": {
+    "files": [
+      "**/*.test.js",
+      "**/*.spec.js",
+      "test/**/*.js"
+    ],
     "source": [
       "src/*",
       "bin/*"
     ],
-    "verbose": true
+    "verbose": true,
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "nyc": {
+    "exclude": [
+      "src/http-server.js",
+      "config",
+      "src/libs"
+    ],
+    "cache": true
   },
   "release": {
     "analyzeCommits": "@bubltechnology/customizable-commit-analyzer"
   },
   "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    },
     "commitTypeMap": {
       "feat": "minor",
       "fix": "patch",
-      "docs": "patch",
+      "docs": "null",
       "style": "null",
-      "refactor": "patch",
+      "refactor": "null",
       "perf": "patch",
       "test": "null",
       "build": "patch",
-      "ci": "patch",
-      "chore": "patch"
+      "ci": "null",
+      "chore": "null"
     }
   },
-  "pre-commit": "lint-staged",
   "lint-staged": {
-    "*.js": "lint"
+    "*.js": [
+      "eslint --fix ",
+      "git add"
+    ],
+    ".json": [
+      "eslint --ext json --fix ",
+      "git add "
+    ]
   }
 }

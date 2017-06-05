@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  http-server:
+    container_name: http-server
+    build: .
+    ports:
+     - "3000:3000"
+    expose:
+     - "3000"
+    environment:
+     - "NODE_ENV=production"
+     - "HTTP_PORT=3000"
+     - "LOGGER_LEVEL=info"
