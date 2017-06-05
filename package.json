@@ -3,6 +3,9 @@
   "version": "0.0.0-development",
   "description": "Boilerplate for NodeJS HTTP RESTful API based on Koa and koa-router",
   "main": "dist/index.js",
+  "bin": {
+    "koa-http-server": "./bin/http-server"
+  },
   "repository": "git@github.com:TeslaCtroitel/koa-node8-boilerplate.git",
   "author": "EnRoute <nnsceg@gmail.com>",
   "license": "MIT",
@@ -17,10 +20,11 @@
     "node8"
   ],
   "scripts": {
-    "test": "npm run cover",
-    "posttest": "nyc report --reporter=lcov",
-    "test:dev": "ava --watch",
+    "start": "node ./bin/http-server.js",
+    "test": "NODE_ENV=test ava",
+    "test:dev": "NODE_ENV=test ava --watch",
     "cover": "nyc ava",
+    "postcover": "nyc report --reporter=lcov",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint src config bin",
     "lint:fix": "eslint --fix src config bin",
@@ -28,9 +32,18 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "bunyan": "^1.8.10",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.0",
+    "twconf": "^0.3.5"
+  },
   "devDependencies": {
     "@bubltechnology/customizable-commit-analyzer": "^1.0.2-0",
     "ava": "^0.19.1",
+    "bunyan-debug-stream": "^1.0.8",
     "commitizen": "^2.9.6",
     "coveralls": "^2.13.1",
     "eslint": "^3.19.0",
@@ -39,7 +52,8 @@
     "lint-staged": "^3.5.0",
     "nyc": "^11.0.2",
     "pre-commit": "^1.2.2",
-    "semantic-release": "^6.3.6"
+    "semantic-release": "^6.3.6",
+    "supertest": "^3.0.0"
   },
   "engines": {
     "node": ">=7.6.0"
@@ -60,6 +74,11 @@
     }
   },
   "ava": {
+    "files": [
+      "**/*.test.js",
+      "**/*.spec.js",
+      "test/**/*.js"
+    ],
     "source": [
       "src/*",
       "bin/*"
