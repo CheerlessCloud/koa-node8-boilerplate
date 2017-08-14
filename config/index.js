@@ -3,10 +3,11 @@ import TwConf from 'twconf';
 
 const config = new TwConf({
   nodeEnv: {
-    comment: 'Run enviroment type',
-    type: new TwConf.Types.StringType({
+    comment: 'Enviroment type',
+    type: {
+      name: 'string',
       allowed: ['development', 'test', 'production'],
-    }),
+    },
     default: 'development',
     splitter: val => ({
       nodeEnv: val,
@@ -17,19 +18,24 @@ const config = new TwConf({
   },
   loggerName: {
     comment: 'Bunyan logger name',
-    type: new TwConf.Types.StringType(),
+    type: 'string',
     default: `http-server-${hostname()}`,
   },
   loggerLevel: {
     comment: 'Bunyan log level',
-    type: new TwConf.Types.StringType({
+    type: {
+      name: 'string',
       allowed: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
-    }),
-    default: 'warn',
+    },
+    default: 'info',
   },
   httpPort: {
     comment: 'Port for HTTP server',
-    type: new TwConf.Types.IntType(0, 65535),
+    type: {
+      name: 'int',
+      min: 0,
+      max: 65535,
+    },
     default: 3000,
   },
 });
