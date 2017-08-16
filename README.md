@@ -5,14 +5,14 @@
 [![codestyle](https://img.shields.io/badge/codestyle-airbnb-brightgreen.svg?style=flat-square)](https://github.com/airbnb/javascript)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-[![Coverage Status](https://img.shields.io/coveralls/TeslaCtroitel/koa-node8-boilerplate.svg?style=flat-square)]()
-[![dependencies Status](https://david-dm.org/TeslaCtroitel/koa-node8-boilerplate/status.svg?style=flat-square)](https://david-dm.org/TeslaCtroitel/koa-node8-boilerplate)
-[![devDependencies Status](https://david-dm.org/TeslaCtroitel/koa-node8-boilerplate/dev-status.svg?style=flat-square)](https://david-dm.org/TeslaCtroitel/koa-node8-boilerplate?type=dev)
+[![Coverage Status](https://img.shields.io/coveralls/CheerlessCloud/koa-node8-boilerplate.svg?style=flat-square)]()
+[![dependencies Status](https://david-dm.org/CheerlessCloud/koa-node8-boilerplate/status.svg?style=flat-square)](https://david-dm.org/CheerlessCloud/koa-node8-boilerplate)
+[![devDependencies Status](https://david-dm.org/CheerlessCloud/koa-node8-boilerplate/dev-status.svg?style=flat-square)](https://david-dm.org/CheerlessCloud/koa-node8-boilerplate?type=dev)
 
 [![node](https://img.shields.io/badge/node-8.x-brightgreen.svg?style=flat-square)]()
 [![npm](https://img.shields.io/badge/npm-5.x-blue.svg?style=flat-square)]()
 
-[![Sponsor](https://app.codesponsor.io/embed/jkPpzosXxwDBBaBNpoqWKCXd/TeslaCtroitel/koa-node8-boilerplate.svg)](https://app.codesponsor.io/link/jkPpzosXxwDBBaBNpoqWKCXd/TeslaCtroitel/koa-node8-boilerplate)
+[![Sponsor](https://app.codesponsor.io/embed/jkPpzosXxwDBBaBNpoqWKCXd/CheerlessCloud/koa-node8-boilerplate.svg)](https://app.codesponsor.io/link/jkPpzosXxwDBBaBNpoqWKCXd/CheerlessCloud/koa-node8-boilerplate)
 
 Boilerplate for NodeJS HTTP RESTful API based on Koa.
 
@@ -36,7 +36,7 @@ Out of box support:
 - [**Husky**](https://github.com/typicode/husky) for run tests before commit
 - Simple [**TravisCI**](https://travis-ci.org) config
 - [**EditorConfig**](http://editorconfig.org/)
-- [**Twconf**](https://github.com/TeslaCtroitel/twconf) for managment app configuration
+- [**Twconf**](https://github.com/CheerlessCloud/twconf) for managment app configuration
 - JSON logging with [**Bunyan**](https://github.com/trentm/node-bunyan) (in dev environment human-readable  output format)
 - [**Semantic-release**](https://github.com/semantic-release/semantic-release) with [**customizable-commit-analyzer**](https://github.com/BublTechnology/customizable-commit-analyzer) for automate publishing releases to npm (yes, it looks like an extra functionality for the http server, but you can easily remove it)
 - [**Cross-env**](https://github.com/kentcdodds/cross-env) for sets and use environment variables across platforms
