@@ -37,29 +37,29 @@
     "precommit": "lint-staged && npm run cover"
   },
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
     "bluebird": "^3.5.0",
     "bunyan": "^1.8.12",
     "cross-env": "^5.0.5",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
-    "twconf": "^0.6.0"
+    "twconf": "^0.6.1"
   },
   "devDependencies": {
     "@bubltechnology/customizable-commit-analyzer": "^1.0.2-0",
-    "ava": "^0.21.0",
-    "babel-cli": "^6.24.1",
+    "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.24.1",
+    "babel-register": "^6.26.0",
     "bunyan-debug-stream": "^1.0.8",
     "catw": "^1.0.1",
     "coveralls": "^2.13.1",
-    "eslint": "^4.0.0",
-    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.7.0",
@@ -69,7 +69,7 @@
     "lint-staged": "^4.0.3",
     "nyc": "^11.1.0",
     "rimraf": "^2.6.1",
-    "semantic-release": "^6.3.6",
+    "semantic-release": "^7.0.2",
     "supertest": "^3.0.0"
   },
   "engines": {
