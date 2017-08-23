@@ -1,4 +1,4 @@
-FROM node:8.3-alpine
+FROM node:8.4-alpine
 
 # from this folder you can externaly grub code coverage report
 VOLUME /usr/src/app/coverage
