@@ -34,7 +34,8 @@
     "lint": "eslint --ext json --ext js .",
     "lint:fix": "eslint --ext json --ext js --fix .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "precommit": "lint-staged && npm run cover"
+    "precommit": "lint-staged && npm run cover",
+    "prepush": "nsp check -o summary"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -67,6 +68,7 @@
     "eslint-plugin-json": "^1.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.3",
+    "nsp": "^2.7.0",
     "nyc": "^11.1.0",
     "rimraf": "^2.6.1",
     "semantic-release": "^7.0.2",
