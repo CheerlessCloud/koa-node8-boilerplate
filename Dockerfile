@@ -1,15 +1,17 @@
-FROM node:8.4-alpine
+FROM node:8.5-alpine
 
-# from this folder you can externaly grub code coverage report
-VOLUME /usr/src/app/coverage
+# update npm to latest version
+RUN npm i -g npm@5.4.1
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+# from this folder you can externaly grub code coverage report
+VOLUME /usr/src/app/coverage
+
 COPY package*.json /usr/src/app/
 
-
-# install all dependencies (with dev)
+# install all dependencies (with devDeps)
 RUN npm i -s
 
 # copy application code into container
@@ -17,10 +19,8 @@ COPY . /usr/src/app
 
 RUN npm run -s build && npm run -s cover
 
-# clear node_modules folder, because we don't need devDependencies on production
-# and install only prod dependencies
-# clear npm cache
-RUN rm -rf node_modules/* src && npm i -s --production && rm -rf ~/.npm
+# remove non-production dependencies and clear npm cache
+RUN npm prune && rm -rf ~/.npm
 
 EXPOSE 3000
 
