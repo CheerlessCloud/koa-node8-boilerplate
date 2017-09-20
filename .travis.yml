@@ -1,5 +1,11 @@
-sudo: false
+### Only for Docker
+sudo: required
+services:
+  - docker
+### docker section end
+
 language: node_js
+
 cache:
   directories:
     - node_modules
@@ -23,6 +29,8 @@ before_script:
   - npm prune
 script:
   - npm run cover
+  # If you wan't to use docker, you can build container and push to remote registry
+  - docker build -t tmp-koa-node8-boilerplate .
 after_success:
  - npm run report-coverage
 # uncomment this if you want publish package to npm
