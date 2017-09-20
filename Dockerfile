@@ -1,7 +1,7 @@
 FROM node:8.5-alpine
 
 # update npm to latest version
-RUN npm i -g npm@5.4.1
+RUN npm i -s -g npm@5.4.2
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
