@@ -41,6 +41,7 @@ Out of box support:
 - JSON logging with [**Bunyan**](https://github.com/trentm/node-bunyan) (in dev environment human-readable  output format)
 - [**Semantic-release**](https://github.com/semantic-release/semantic-release) with [**customizable-commit-analyzer**](https://github.com/BublTechnology/customizable-commit-analyzer) for automate publishing releases to npm (yes, it looks like an extra functionality for the http server, but you can easily remove it)
 - [**Cross-env**](https://github.com/kentcdodds/cross-env) for sets and use environment variables across platforms
+- [**NSP**](https://github.com/nodesecurity/nsp) for identify known vulnerabilities in your dependencies (run by git hook on every push)
 
 #### Bleeding edge
 If you want to use most newest features of js ecosystem, you may check out "bleeding-edge" branch. For now, there Babel v7 alpha with [new proposals](https://github.com/tc39/proposals).
