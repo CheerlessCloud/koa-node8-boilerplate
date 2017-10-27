@@ -27,7 +27,6 @@ Out of box support:
   - [**eslint-plugin-json**](https://github.com/azeemba/eslint-plugin-json)
 - [**Lint-staged**](https://github.com/okonet/lint-staged) for run linting on staged files before commit
 - [**Babel v6**](https://github.com/babel/babel) with some plugins for transpiling your code
-  - [**babel-plugin-module-resolver**](https://github.com/tleunen/babel-plugin-module-resolver) for resolve module non-relative path like '#src/http-server.js'
   - [**babel-preset-env**](https://github.com/babel/babel-preset-env) configured for NodeJS 8.x
   - [**babel-preset-stage-0**](https://babeljs.io/docs/plugins/preset-stage-0/)
   - [**babel-register**](https://babeljs.io/docs/usage/babel-register/)

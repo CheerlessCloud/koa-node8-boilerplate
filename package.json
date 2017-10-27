@@ -28,13 +28,13 @@
     "test": "cross-env NODE_ENV=test ava",
     "test:dev": "cross-env NODE_ENV=test ava --watch",
     "test:debug": "cross-env NODE_ENV=test node --inspect --inspect-brk --require babel-register node_modules/ava/profile.js ",
-    "cover": "cross-env NODE_ENV=test nyc ava",
-    "postcover": "nyc report --reporter=lcov",
+    "test:cover": "cross-env NODE_ENV=test nyc ava",
+    "posttest:cover": "nyc report --reporter=lcov",
     "report-coverage": "catw coverage/lcov.info | coveralls",
     "lint": "eslint --ext json --ext js .",
     "lint:fix": "eslint --ext json --ext js --fix .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "precommit": "lint-staged && npm run cover",
+    "precommit": "lint-staged && npm run test:cover",
     "prepush": "nsp check -o summary"
   },
   "dependencies": {
@@ -52,7 +52,6 @@
     "ava": "^0.23.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
-    "babel-plugin-module-resolver": "^2.7.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
@@ -61,7 +60,6 @@
     "coveralls": "^3.0.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsdoc": "^3.1.3",
@@ -112,17 +110,7 @@
       "json",
       "jsdoc",
       "babel"
-    ],
-    "settings": {
-      "import/core-modules": [
-        "#src",
-        "#config",
-        "#libs"
-      ],
-      "import/resolver": {
-        "babel-module": {}
-      }
-    }
+    ]
   },
   "babel": {
     "presets": [
@@ -138,21 +126,6 @@
             "transform-regenerator",
             "transform-async-to-generator"
           ]
-        }
-      ]
-    ],
-    "plugins": [
-      [
-        "module-resolver",
-        {
-          "root": [
-            "."
-          ],
-          "alias": {
-            "#config": "./config",
-            "#libs": "./src/libs",
-            "#src": "./src"
-          }
         }
       ]
     ]

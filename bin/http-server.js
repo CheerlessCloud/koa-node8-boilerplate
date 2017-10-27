@@ -1,6 +1,6 @@
-import httpServer from './../src/http-server';
-import conf from './../config';
-import logger from './../src/libs/logger';
+import httpServer from '../src/http-server';
+import conf from '../config';
+import logger from '../src/libs/logger';
 
 httpServer.listen(conf.get('httpPort'));
 

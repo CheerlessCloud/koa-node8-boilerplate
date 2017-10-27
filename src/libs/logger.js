@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import bunyan from 'bunyan';
-import config from '#config';
+import config from '../../config';
 
 const streams = [];
 

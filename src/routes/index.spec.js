@@ -1,7 +1,7 @@
 /* eslint no-param-reassign: "off" */
 import test from 'ava';
 import request from 'supertest';
-import httpServer from '#src/http-server';
+import httpServer from '../http-server';
 
 let server = httpServer;
 
