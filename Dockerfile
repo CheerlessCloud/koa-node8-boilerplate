@@ -1,7 +1,4 @@
-FROM node:8.5-alpine
-
-# update npm to latest version
-RUN npm i -s -g npm@5.4.2
+FROM node:8.8-alpine
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -17,10 +14,10 @@ RUN npm i -s
 # copy application code into container
 COPY . /usr/src/app
 
-RUN npm run -s build && npm run -s cover
+RUN npm run -s build && npm run -s test:cover
 
 # remove non-production dependencies and clear npm cache
-RUN npm prune && rm -rf ~/.npm
+RUN npm prune --production && rm -rf ~/.npm
 
 EXPOSE 3000
 
