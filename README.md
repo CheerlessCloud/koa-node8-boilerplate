@@ -13,8 +13,6 @@
 [![node](https://img.shields.io/badge/node-8.x-brightgreen.svg?style=flat-square)]()
 [![npm](https://img.shields.io/badge/npm-5.x-blue.svg?style=flat-square)]()
 
-[![Sponsor](https://app.codesponsor.io/embed/jkPpzosXxwDBBaBNpoqWKCXd/CheerlessCloud/koa-node8-boilerplate.svg)](https://app.codesponsor.io/link/jkPpzosXxwDBBaBNpoqWKCXd/CheerlessCloud/koa-node8-boilerplate)
-
 Boilerplate for NodeJS HTTP RESTful API based on Koa.
 
 Out of box support:
