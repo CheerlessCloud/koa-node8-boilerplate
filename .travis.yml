@@ -28,7 +28,7 @@ notifications:
 before_script:
   - npm prune
 script:
-  - npm run cover
+  - npm run test:cover
   # If you wan't to use docker, you can build container and push to remote registry
   - docker build -t tmp-koa-node8-boilerplate .
 after_success:
