@@ -25,9 +25,9 @@ Out of box support:
   - [**eslint-plugin-json**](https://github.com/azeemba/eslint-plugin-json)
 - [**Lint-staged**](https://github.com/okonet/lint-staged) for run linting on staged files before commit
 - [**Babel v6**](https://github.com/babel/babel) with some plugins for transpiling your code
-  - [**babel-preset-env**](https://github.com/babel/babel-preset-env) configured for NodeJS 8.x
-  - [**babel-preset-stage-0**](https://babeljs.io/docs/plugins/preset-stage-0/)
+  - [**babel-preset-env**](https://github.com/babel/babel-preset-env) configured for current NodeJS release (8.x)
   - [**babel-register**](https://babeljs.io/docs/usage/babel-register/)
+- [**Nodemon**](https://github.com/remy/nodemon) - for autorestart app in development mode (but of course better way is TDD)
 - [**Docker**](https://www.docker.com/) (*Dockerfile*, *docker-compose*)
 - Tests with [**Ava**](https://github.com/avajs/ava) and [**Supertest**](https://github.com/visionmedia/supertest) for HTTP
 - [**Nyc**](https://github.com/istanbuljs/nyc) for grub test coverage and [**Coveralls**](https://coveralls.io/) plugin

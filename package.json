@@ -22,9 +22,9 @@
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "babel . -d ./dist/ -s --ignore node_modules,test.js,spec.js,coverage,dist,.nyc_output",
-    "start": "node ./dist/bin/http-server.js",
-    "start:dev": "node --require babel-register ./bin/http-server.js",
-    "start:debug": "node --inspect-brk --require babel-register ./bin/http-server.js",
+    "start": "cross-env NODE_ENV=production node ./dist/bin/http-server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon --require babel-register ./bin/http-server.js",
+    "start:debug": "cross-env NODE_ENV=development node --inspect-brk --require babel-register ./bin/http-server.js",
     "test": "cross-env NODE_ENV=test ava",
     "test:dev": "cross-env NODE_ENV=test ava --watch",
     "test:debug": "cross-env NODE_ENV=test node --inspect-brk --require babel-register node_modules/ava/profile.js ",
@@ -66,6 +66,7 @@
     "eslint-plugin-json": "^1.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
+    "nodemon": "^1.14.11",
     "nsp": "^3.1.0",
     "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
@@ -151,6 +152,17 @@
       "src/libs"
     ],
     "cache": true
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.js",
+      "**/*.spec.js",
+      "test/**/*.js",
+      "dist",
+      "coverage",
+      ".*"
+    ],
+    "delay": "1000"
   },
   "release": {
     "analyzeCommits": "@bubltechnology/customizable-commit-analyzer"
