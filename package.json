@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@bubltechnology/customizable-commit-analyzer": "^1.0.1",
-    "ava": "^0.23.0",
+    "ava": "^0.24.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-preset-env": "^1.6.1",
@@ -65,11 +65,11 @@
     "eslint-plugin-jsdoc": "^3.1.3",
     "eslint-plugin-json": "^1.2.0",
     "husky": "^0.14.3",
-    "lint-staged": "^4.3.0",
-    "nsp": "^2.8.1",
+    "lint-staged": "^6.0.0",
+    "nsp": "^3.1.0",
     "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
-    "semantic-release": "^8.2.3",
+    "semantic-release": "^12.2.2",
     "supertest": "^3.0.0"
   },
   "engines": {
