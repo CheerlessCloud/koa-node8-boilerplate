@@ -28,10 +28,9 @@ notifications:
 before_script:
   - npm prune
 script:
-  # If you wan't to use docker, run tests by next line (uncomment it before, of course)
-  # - npm run test:cover
+  - npm run test:cover
   # If you wan't to use docker, you can build container and push to remote registry
-  - docker build -t tmp-koa-node8-boilerplate .
+  - docker build .
 after_success:
  - npm run report-coverage
 # uncomment this if you want publish package to npm
