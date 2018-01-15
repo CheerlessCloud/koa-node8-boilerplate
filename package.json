@@ -61,7 +61,6 @@
     "coveralls": "^3.0.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsdoc": "^3.1.3",
     "eslint-plugin-json": "^1.2.0",
@@ -91,26 +90,22 @@
     "rules": {
       "strict": "error",
       "no-restricted-syntax": "off",
-      "babel/new-cap": 1,
-      "babel/no-invalid-this": 1,
-      "babel/semi": 1,
-      "jsdoc/check-param-names": 1,
-      "jsdoc/check-tag-names": 1,
-      "jsdoc/check-types": 1,
-      "jsdoc/newline-after-description": 1,
-      "jsdoc/require-description-complete-sentence": 1,
-      "jsdoc/require-example": 0,
-      "jsdoc/require-hyphen-before-param-description": 1,
-      "jsdoc/require-param": 1,
-      "jsdoc/require-param-description": 1,
+      "jsdoc/check-param-names": "warn",
+      "jsdoc/check-tag-names": "warn",
+      "jsdoc/check-types": "warn",
+      "jsdoc/newline-after-description": "warn",
+      "jsdoc/require-description-complete-sentence": "warn",
+      "jsdoc/require-example": "error",
+      "jsdoc/require-hyphen-before-param-description": "warn",
+      "jsdoc/require-param": "warn",
+      "jsdoc/require-param-description": "warn",
       "jsdoc/require-param-type": "error",
-      "jsdoc/require-returns-description": 1,
-      "jsdoc/require-returns-type": 1
+      "jsdoc/require-returns-description": "warn",
+      "jsdoc/require-returns-type": "warn"
     },
     "plugins": [
       "json",
-      "jsdoc",
-      "babel"
+      "jsdoc"
     ]
   },
   "babel": {
