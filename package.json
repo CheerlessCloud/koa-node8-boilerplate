@@ -35,8 +35,7 @@
     "lint:format": "prettier --write \"src/**/*.js\" \"config/**/*.js\" \"bin/**/*.js\"",
     "lint:fix": "eslint --ext .json,.js --fix .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "precommit": "lint-staged",
-    "prepush": "nsp check -o summary"
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -69,7 +68,6 @@
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
     "nodemon": "^1.14.11",
-    "nsp": "^3.1.0",
     "nyc": "^11.3.0",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
