@@ -35,7 +35,7 @@
     "lint:format": "prettier --write \"src/**/*.js\" \"config/**/*.js\" \"bin/**/*.js\"",
     "lint:fix": "eslint --ext .json,.js --fix .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "precommit": "lint-staged && npm run test:cover",
+    "precommit": "lint-staged",
     "prepush": "nsp check -o summary"
   },
   "dependencies": {
