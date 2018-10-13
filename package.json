@@ -79,26 +79,6 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "babel": {
-    "retainLines": true,
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          },
-          "useBuiltIns": "usage",
-          "shippedProposals": true,
-          "loose": true
-        }
-      ]
-    ],
-    "plugins": [
-      "syntax-object-rest-spread",
-      "transform-do-expressions"
-    ]
-  },
   "ava": {
     "files": [
       "**/*.test.js",

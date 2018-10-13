@@ -1,0 +1,17 @@
+{
+  "retainLines": true,
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        },
+        "useBuiltIns": "usage",
+        "shippedProposals": true,
+        "loose": true
+      }
+    ]
+  ],
+  "plugins": ["syntax-object-rest-spread", "transform-do-expressions"]
+}
