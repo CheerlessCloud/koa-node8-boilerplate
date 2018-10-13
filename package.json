@@ -34,8 +34,7 @@
     "lint": "eslint --ext .json,.js .",
     "lint:format": "prettier --write \"src/**/*.js\" \"config/**/*.js\" \"bin/**/*.js\"",
     "lint:fix": "eslint --ext .json,.js --fix .",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "precommit": "lint-staged"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -65,7 +64,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "husky": "^0.14.3",
+    "husky": "^1.1.2",
     "lint-staged": "^6.0.0",
     "nodemon": "^1.14.11",
     "nyc": "^11.3.0",
@@ -133,5 +132,10 @@
     "*.{js,json}": [
       "eslint --ext .json,.js"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
