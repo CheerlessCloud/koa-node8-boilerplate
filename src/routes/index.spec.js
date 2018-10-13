@@ -9,7 +9,7 @@ test.before(() => {
   server = server.listen();
 });
 
-test('check server response', async (t) => {
+test('check server response', async t => {
   t.plan(3);
 
   const res = await request(server).get('/');
@@ -19,7 +19,7 @@ test('check server response', async (t) => {
   t.is(res.text, 'Hello World!', 'Corrent response body');
 });
 
-test('check server response for undefined path', async (t) => {
+test('check server response for undefined path', async t => {
   t.plan(2);
 
   const res = await request(server).get('/undef');
@@ -28,7 +28,7 @@ test('check server response for undefined path', async (t) => {
   t.is(res.status, 404, 'Response status is "Not Found"');
 });
 
-test('check server response for throw error path', async (t) => {
+test('check server response for throw error path', async t => {
   t.plan(2);
 
   const res = await request(server).get('/throw-error');
