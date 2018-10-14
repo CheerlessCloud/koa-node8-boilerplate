@@ -17,7 +17,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'prettier/prettier': 'error',
   },
-  plugins: ['json', 'prettier'],
+  plugins: ['prettier'],
   overrides: [
     {
       files: ['*.test.js', '*.spec.js', 'test/**/*.js'],

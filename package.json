@@ -28,9 +28,9 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:dev": "cross-env NODE_ENV=test jest --watch --notify",
     "test:cover": "cross-env NODE_ENV=test jest --coverage",
-    "lint": "eslint --ext .json,.js .",
+    "lint": "eslint .",
     "lint:format": "prettier --write \"src/**/*.js\" \"config/**/*.js\" \"bin/**/*.js\"",
-    "lint:fix": "eslint --ext .json,.js --fix .",
+    "lint:fix": "eslint --fix .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
@@ -58,7 +58,6 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
@@ -125,8 +124,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "eslint --ext .json,.js"
+    "*.{js}": [
+      "eslint"
     ]
   },
   "husky": {
