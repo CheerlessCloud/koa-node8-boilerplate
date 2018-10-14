@@ -1,28 +1,20 @@
-FROM node:8-alpine
+FROM node:10.12-alpine
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# from this folder you can externaly grub code coverage report
-VOLUME /usr/src/app/coverage
-
 COPY package*.json /usr/src/app/
 
-# install all dependencies (with devDeps)
-RUN npm i -s
+# install production dependencies
+RUN npm ci -q
 
-# copy application code into container
-COPY . /usr/src/app
-
-RUN npm run -s build && npm run -s test:cover
-
-# remove non-production dependencies and clear npm cache
-RUN npm prune --production && rm -rf ~/.npm
+# copy transpiled application code into container
+COPY ./dist /usr/src/app/dist
 
 EXPOSE 3000
 
 ENV NODE_ENV=production \
-    LOGGER_LEVEL=info \
-    HTTP_PORT=3000
+  LOGGER_LEVEL=info \
+  HTTP_PORT=3000
 
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
