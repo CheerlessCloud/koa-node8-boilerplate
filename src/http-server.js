@@ -25,12 +25,10 @@ if (config.get('isDevelopment')) {
 // enable parsing request body
 app.use(bodyParser());
 
-app
-  .use(routes.routes())
-  .use(routes.allowedMethods());
+app.use(routes.routes()).use(routes.allowedMethods());
 
 app.on('error', (err, ctx) => {
-  if (err.logged || (ctx.status >= 500) || config.get('isDevelopment')) {
+  if (err.logged || ctx.status >= 500 || config.get('isDevelopment')) {
     logger.error({
       err,
       req: ctx.req,

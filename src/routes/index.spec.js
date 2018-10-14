@@ -1,42 +1,46 @@
-/* eslint no-param-reassign: "off" */
-import test from 'ava';
 import request from 'supertest';
 import httpServer from '../http-server';
 
-let server = httpServer;
+describe('Base HTTP routes', () => {
+  let server = httpServer;
 
-test.before(() => {
-  server = server.listen();
-});
+  beforeAll(() => {
+    server = server.listen();
+  });
 
-test('check server response', async (t) => {
-  t.plan(3);
+  afterAll(() => {
+    server.close();
+  });
 
-  const res = await request(server).get('/');
+  test('check server response', async () => {
+    expect.assertions(3);
 
-  t.is(res.status, 200, 'Response status is OK');
-  t.is(res.type, 'text/plain', 'Response type is equal to text/plain');
-  t.is(res.text, 'Hello World!', 'Corrent response body');
-});
+    const res = await request(server).get('/');
 
-test('check server response for undefined path', async (t) => {
-  t.plan(2);
+    expect(res.status).toBe(200);
+    expect(res.type).toBe('text/plain');
+    expect(res.text).toBe('Hello World!');
+  });
 
-  const res = await request(server).get('/undef');
+  test('check server response for undefined path', async () => {
+    expect.assertions(2);
 
-  t.is(res.type, 'text/plain', 'Response type is equal to text/plain');
-  t.is(res.status, 404, 'Response status is "Not Found"');
-});
+    const res = await request(server).get('/undef');
 
-test('check server response for throw error path', async (t) => {
-  t.plan(2);
+    expect(res.type).toBe('text/plain');
+    expect(res.status).toBe(404);
+  });
 
-  const res = await request(server).get('/throw-error');
+  test('check server response for throw error path', async () => {
+    expect.assertions(2);
 
-  t.is(res.type, 'text/plain', 'Response type is equal to text/plain');
-  t.is(res.status, 400, 'Response status is "Bad request"');
-});
+    const res = await request(server).get('/throw-error');
 
-test.after(() => {
-  server.close();
+    expect(res.type).toBe('text/plain');
+    expect(res.status).toBe(400);
+  });
+
+  afterAll(() => {
+    server.close();
+  });
 });

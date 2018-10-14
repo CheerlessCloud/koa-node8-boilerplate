@@ -1,0 +1,60 @@
+stages:
+  - init
+  - tests
+  - build
+
+node_modules:
+  stage: init
+  image: node:10.12.0-alpine
+  tags:
+    - staging
+  cache:
+    key: '$CI_PROJECT_ID'
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 4 hrs
+  script:
+    - npm i
+
+lint:
+  stage: tests
+  image: node:10.12.0-alpine
+  tags:
+    - staging
+  dependencies:
+    - node_modules
+  script:
+    - npm run lint
+
+integration tests:
+  stage: tests
+  image: node:10.12.0-alpine
+  tags:
+    - staging
+  dependencies:
+    - node_modules
+  artifacts:
+    paths:
+      - coverage/.
+    expire_in: 4 week
+    name: 'coverage-${CI_BUILD_REF_NAME}_${CI_BUILD_REF}'
+  coverage: '/^All files\s+\|\s+\d+\.*\d*\s+\|\s*(\d+\.*\d*)/'
+  script:
+    - npm run test:cover -- --detectOpenHandles
+
+build:
+  stage: build
+  image: node:10.12.0-alpine
+  tags:
+    - staging
+  dependencies:
+    - node_modules
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 4 hrs
+  script:
+    - npm run build
