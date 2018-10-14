@@ -21,10 +21,10 @@
   ],
   "scripts": {
     "prebuild": "rimraf ./dist",
-    "build": "babel . -d ./dist/ -s --ignore node_modules,test.js,spec.js,coverage,dist,.nyc_output",
+    "build": "babel --source-maps --out-dir ./dist/ --ignore node_modules,test.js,spec.js,coverage,dist,.nyc_output .",
     "start": "cross-env NODE_ENV=production node ./dist/bin/http-server.js",
-    "start:dev": "cross-env NODE_ENV=development nodemon --require babel-register ./bin/http-server.js",
-    "start:debug": "cross-env NODE_ENV=development node --inspect-brk --require babel-register ./bin/http-server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon --require @babel/register ./bin/http-server.js",
+    "start:debug": "cross-env NODE_ENV=development node --inspect-brk --require @babel/register ./bin/http-server.js",
     "test": "cross-env NODE_ENV=test jest",
     "test:dev": "cross-env NODE_ENV=test jest --watch --notify",
     "test:cover": "cross-env NODE_ENV=test jest --coverage",
@@ -34,7 +34,7 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
+    "@babel/polyfill": "^7.0.0",
     "bluebird": "^3.5.1",
     "bunyan": "^1.8.12",
     "cross-env": "^5.1.0",
@@ -44,14 +44,14 @@
     "twconf": "^0.6.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
     "@bubltechnology/customizable-commit-analyzer": "^1.0.1",
-    "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
-    "babel-plugin-transform-do-expressions": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-register": "^6.26.0",
     "bunyan-debug-stream": "^1.0.8",
     "coveralls": "^3.0.0",
     "eslint": "^5.7.0",
@@ -108,5 +108,10 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }
