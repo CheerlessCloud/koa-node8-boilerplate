@@ -23,7 +23,7 @@ Out of box support:
 - [**Lint-staged**](https://github.com/okonet/lint-staged) for run linting on staged files before commit
 - [**Babel v6**](https://github.com/babel/babel) with [**preset-env**](https://github.com/babel/babel-preset-env) for transpiling your code
 - [**Nodemon**](https://github.com/remy/nodemon) for autorestart app in development mode (but of course better way is TDD)
-- [**Jest**](https://github.com/facebook/jest) and [**Supertest**](https://github.com/visionmedia/supertest) for testing
+- [**Jest**](https://github.com/facebook/jest) and [**supertest**](https://github.com/visionmedia/supertest) for testing
 - [**Docker**](https://www.docker.com/) (_Dockerfile_, _docker-compose_)
 - [**Coveralls**](https://coveralls.io/) reporing from CI
 - [**Husky**](https://github.com/typicode/husky) for run tests before commit
