@@ -38,10 +38,10 @@
     "bluebird": "^3.5.1",
     "bunyan": "^1.8.12",
     "cross-env": "^5.1.0",
-    "koa": "^2.3.0",
+    "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
-    "twconf": "^0.6.1"
+    "twconf": "^0.7.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -52,7 +52,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "bunyan-debug-stream": "^1.0.8",
+    "bunyan-debug-stream": "^2.0.0",
     "coveralls": "^3.0.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.1.0",
