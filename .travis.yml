@@ -28,7 +28,7 @@ notifications:
 before_script:
   - npm prune
 script:
-  - npm run test:cover -- --detectOpenHandles
+  - npm run test:cover
   - npm run build
 after_success:
   - catw coverage/lcov.info | node_modules/.bin/coveralls
