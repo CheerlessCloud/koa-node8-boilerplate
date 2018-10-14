@@ -1,7 +1,7 @@
 ### Only for Docker
-sudo: required
-services:
-  - docker
+# sudo: required
+# services:
+#   - docker
 ### docker section end
 
 language: node_js
@@ -28,10 +28,9 @@ notifications:
 before_script:
   - npm prune
 script:
-  - npm run test:cover
-  # If you wan't to use docker, you can build container and push to remote registry
-  - docker build .
+  - npm run test:cover -- --detectOpenHandles
+  - npm run build
 after_success:
- - npm run report-coverage
-# uncomment this if you want publish package to npm
+  - catw coverage/lcov.info | node_modules/.bin/coveralls
+# uncomment this if you want publish package to npm via semantic-release
 #  - npm run semantic-release
