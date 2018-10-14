@@ -71,30 +71,6 @@
   "engines": {
     "node": ">=10.12.0"
   },
-  "ava": {
-    "files": [
-      "**/*.test.js",
-      "**/*.spec.js",
-      "test/**/*.js"
-    ],
-    "source": [
-      "src/*",
-      "bin/*"
-    ],
-    "verbose": true,
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
-  "nyc": {
-    "exclude": [
-      "src/http-server.js",
-      "config",
-      "src/libs"
-    ],
-    "cache": true
-  },
   "nodemonConfig": {
     "ignore": [
       "**/*.test.js",
