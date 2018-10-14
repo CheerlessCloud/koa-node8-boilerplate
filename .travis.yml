@@ -33,4 +33,4 @@ script:
 after_success:
   - catw coverage/lcov.info | node_modules/.bin/coveralls
 # uncomment this if you want publish package to npm via semantic-release
-#  - npm run semantic-release
+#  - node_modules/.bin/semantic-release

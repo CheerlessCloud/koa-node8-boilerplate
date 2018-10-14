@@ -30,8 +30,7 @@
     "test:cover": "cross-env NODE_ENV=test jest --coverage",
     "lint": "eslint .",
     "lint:format": "prettier --write \"src/**/*.js\" \"config/**/*.js\" \"bin/**/*.js\"",
-    "lint:fix": "eslint --fix .",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "lint:fix": "eslint --fix ."
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -48,7 +47,6 @@
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/register": "^7.0.0",
-    "@bubltechnology/customizable-commit-analyzer": "^1.0.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -65,7 +63,7 @@
     "nodemon": "^1.14.11",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
-    "semantic-release": "^12.2.2",
+    "semantic-release": "^15.9.17",
     "supertest": "^3.0.0"
   },
   "engines": {
@@ -83,20 +81,37 @@
     "delay": "1000"
   },
   "release": {
-    "analyzeCommits": "@bubltechnology/customizable-commit-analyzer"
-  },
-  "config": {
-    "commitTypeMap": {
-      "feat": "minor",
-      "fix": "patch",
-      "docs": "null",
-      "style": "null",
-      "refactor": "null",
-      "perf": "patch",
-      "test": "null",
-      "build": "patch",
-      "ci": "null",
-      "chore": "null"
+    "analyzeCommits": {
+      "preset": "angular",
+      "releaseRules": [
+        {
+          "type": "feat",
+          "release": "minor"
+        },
+        {
+          "type": "fix",
+          "release": "patch"
+        },
+        {
+          "type": "docs",
+          "scope": "/readme/",
+          "release": "patch"
+        },
+        {
+          "type": "perf",
+          "release": "patch"
+        },
+        {
+          "type": "build",
+          "release": "patch"
+        }
+      ],
+      "parserOpts": {
+        "noteKeywords": [
+          "BREAKING CHANGE",
+          "BREAKING CHANGES"
+        ]
+      }
     }
   },
   "lint-staged": {
