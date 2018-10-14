@@ -21,7 +21,7 @@ Out of box support:
 - [**ESlint**](https://github.com/eslint/eslint) with [**Airbnb styleguide**](https://github.com/airbnb/javascript) for linting
 - [**Prettier**](https://prettier.io/) for formatting code
 - [**Lint-staged**](https://github.com/okonet/lint-staged) for run linting on staged files before commit
-- [**Babel v6**](https://github.com/babel/babel) with [**preset-env**](https://github.com/babel/babel-preset-env) for transpiling your code
+- [**Babel v7**](https://github.com/babel/babel) with [**preset-env**](https://github.com/babel/babel-preset-env) for transpiling your code
 - [**Nodemon**](https://github.com/remy/nodemon) for autorestart app in development mode (but of course better way is TDD)
 - [**Jest**](https://github.com/facebook/jest) and [**supertest**](https://github.com/visionmedia/supertest) for testing
 - [**Docker**](https://www.docker.com/) (_Dockerfile_, _docker-compose_)
