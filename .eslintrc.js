@@ -1,11 +1,12 @@
 module.exports = {
   root: true,
   extends: ['eslint-config-airbnb-base', 'plugin:prettier/recommended'],
+  parser: 'babel-eslint',
   parserOptions: {
-    parser: 'babel-eslint',
+    ecmaVersion: 9,
     sourceType: 'module',
     allowImportExportEverywhere: false,
-    codeFrame: false,
+    codeFrame: true,
   },
   env: {
     node: true,
