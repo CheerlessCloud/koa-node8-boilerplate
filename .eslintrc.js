@@ -27,7 +27,7 @@ module.exports = {
       },
       rules: {
         'no-console': 'off',
-        'eslint no-param-reassign': 'off',
+        'no-param-reassign': 'off',
       },
     },
   ],
