@@ -1,5 +1,5 @@
 import request from 'supertest';
-import httpServer from '../http-server';
+import httpServer from '../src/http-server';
 
 describe('Base HTTP routes', () => {
 	let server = httpServer;

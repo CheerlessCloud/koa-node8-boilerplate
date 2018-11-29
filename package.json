@@ -16,8 +16,12 @@
     "koa2",
     "flexible",
     "nodejs",
+    "mongoose",
+    "microservice",
+    "api",
     "node",
-    "node8"
+    "node8",
+    "node10"
   ],
   "scripts": {
     "prebuild": "rimraf ./dist",
@@ -57,6 +61,7 @@
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^3.0.0",
+    "mongodb-memory-server": "^2.7.2",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
