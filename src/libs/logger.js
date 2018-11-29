@@ -5,7 +5,7 @@ const streams = [];
 
 if (process.env.NODE_ENV === 'development') {
 	// eslint-disable-next-line global-require, import/no-extraneous-dependencies
-	const StdoutStream = require('bunyan-stdout-stream');
+	const StdoutStream = require('bunyan-stdout-stream').default;
 	streams.push({
 		level: 'trace',
 		type: 'raw',
