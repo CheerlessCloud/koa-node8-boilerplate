@@ -5,6 +5,6 @@ import logger from '../src/libs/logger';
 httpServer.listen(config.get('port'));
 
 logger.info({
-	message: 'HTTP server successfully ran',
+	message: 'HTTP server successfully run',
 	port: config.get('port'),
 });
