@@ -43,7 +43,8 @@ integration tests:
     name: 'coverage-${CI_BUILD_REF_NAME}_${CI_BUILD_REF}'
   coverage: '/^All files\s+\|\s+\d+\.*\d*\s+\|\s*(\d+\.*\d*)/'
   script:
-    - cp ./.env.default ./.env && npm run test:cover -- --detectOpenHandles
+    - cp ./.env.default ./.env
+    - npm run test:cover -- --detectOpenHandles
 
 build:
   stage: build
