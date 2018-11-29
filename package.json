@@ -66,6 +66,7 @@
     "mongodb-memory-server": "^2.7.2",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
+    "jest-environment-node": "^23.4.0",
     "lint-staged": "^7.3.0",
     "nodemon": "^1.14.11",
     "prettier": "^1.15.2",
