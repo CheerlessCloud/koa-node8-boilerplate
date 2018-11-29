@@ -1,6 +1,5 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
-import config from '../config';
 import logger from './libs/logger';
 import routes from './routes';
 
@@ -15,11 +14,11 @@ app.silent = false;
 
 // logging requests only in development mode,
 // because this may generate very-very big logs on production
-if (config.get('isDevelopment')) {
-  app.use(async (ctx, next) => {
-    await next();
-    logger.info({ req: ctx.request });
-  });
+if (process.env.NODE_ENV === 'development') {
+	app.use(async (ctx, next) => {
+		await next();
+		logger.info({ req: ctx.request });
+	});
 }
 
 // enable parsing request body
@@ -28,13 +27,13 @@ app.use(bodyParser());
 app.use(routes.routes()).use(routes.allowedMethods());
 
 app.on('error', (err, ctx) => {
-  if (err.logged || ctx.status >= 500 || config.get('isDevelopment')) {
-    logger.error({
-      err,
-      req: ctx.req,
-      res: ctx.res,
-    });
-  }
+	if (err.logged || ctx.status >= 500 || process.env.NODE_ENV === 'development') {
+		logger.error({
+			err,
+			req: ctx.req,
+			res: ctx.res,
+		});
+	}
 });
 
 export default app;
