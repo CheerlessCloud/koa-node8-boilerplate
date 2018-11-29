@@ -44,7 +44,8 @@
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
     "config": "2.0.1",
-    "dotenv": "6.1.0"
+    "dotenv": "6.1.0",
+    "mongoose": "5.3.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -85,10 +86,10 @@
     "delay": "1000"
   },
   "lint-staged": {
-	"src/**/*.{js,json,md}": [
-	  "eslint --fix --ignore-path .gitignore",
-	  "prettier --write",
-	  "git add"
+    "src/**/*.{js,json,md}": [
+      "eslint --fix --ignore-path .gitignore",
+      "prettier --write",
+      "git add"
     ]
   },
   "husky": {
