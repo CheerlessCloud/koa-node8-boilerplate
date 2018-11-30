@@ -1,8 +1,8 @@
 import request from 'supertest';
-import httpServer from '../src/http-server';
+import createServer from '../src/http-server';
 
 describe('Base HTTP routes', () => {
-	let server = httpServer;
+	let server = createServer({});
 
 	beforeAll(() => {
 		server = server.listen();

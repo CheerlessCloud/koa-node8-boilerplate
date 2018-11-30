@@ -1,6 +1,6 @@
 import config from 'config';
 import mongoose from 'mongoose';
-import httpServer from '../src/http-server';
+import createServer from '../src/http-server';
 import logger from '../src/libs/logger';
 
 (async () => {
@@ -8,6 +8,7 @@ import logger from '../src/libs/logger';
 		config.get('db.uri'),
 		config.get('db.opts'),
 	);
+	const httpServer = createServer(mongoose);
 	httpServer.listen(config.get('port'), () => {
 		logger.info({
 			message: 'listen port',
