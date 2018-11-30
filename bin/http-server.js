@@ -1,8 +1,29 @@
 import config from 'config';
+import mongoose from 'mongoose';
 import httpServer from '../src/http-server';
 import logger from '../src/libs/logger';
 
-httpServer.listen(config.get('port'));
+(async () => {
+	await mongoose.connect(
+		config.get('db.uri'),
+		config.get('db.opts'),
+	);
+	httpServer.listen(config.get('port'), () => {
+		logger.info({
+			message: 'listen port',
+			port: config.get('port'),
+		});
+	});
+})().catch(error => {
+	logger.error({
+		message: 'fatal error',
+		error,
+	});
+
+	setTimeout(() => {
+		process.exit(1);
+	}, 1000);
+});
 
 logger.info({
 	message: 'HTTP server successfully run',
