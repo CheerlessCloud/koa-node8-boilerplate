@@ -8,5 +8,5 @@ module.exports = {
   coverageDirectory: './coverage',
   testEnvironment: './jest/IntegrationEnvironment.js',
   notifyMode: 'change',
-  coveragePathIgnorePatterns: ['src/index.js'],
+  coveragePathIgnorePatterns: ['src/http-server.js'],
 };
