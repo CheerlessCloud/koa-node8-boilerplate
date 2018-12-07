@@ -1,6 +1,6 @@
+/* eslint-disable global-require */
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
-import morgan from 'morgan';
 
 import logger from './libs/logger';
 import createRoutes from './routes';
@@ -18,10 +18,17 @@ const createApp = mongoose => {
   // logging requests only in development mode,
   // because this may generate very-very big logs on production
   if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line global-require, import/no-extraneous-dependencies
+    const morgan = require('morgan');
     app.use(morgan('dev'));
     app.use(async (ctx, next) => {
       await next();
-      logger.info({ req: ctx.request });
+      logger.info({
+        query: ctx.request.query,
+        body: ctx.request.body,
+        url: ctx.request.url,
+        headers: ctx.request.headers,
+      });
     });
   }
 
