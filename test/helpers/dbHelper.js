@@ -23,6 +23,6 @@ export const dropCollections = async mongoose => {
 
 	for (const collection of collections) {
 		// eslint-disable-next-line no-await-in-loop
-		await collection.deleteOne();
+		await collection.drop();
 	}
 };
