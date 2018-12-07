@@ -6,21 +6,21 @@ import { setupMongoose, dropCollections } from './helpers';
 const logger = { info() {}, warn() {}, error() {} };
 
 describe('Api.getPage', function() {
-	beforeAll(async () => {
-		this.mongoose = await setupMongoose(mongoose);
-		this.server = createServer(this.mongoose).listen();
-	});
+  beforeAll(async () => {
+    this.mongoose = await setupMongoose(mongoose);
+    this.server = createServer(this.mongoose).listen();
+  });
 
-	afterEach(async () => {
-		await dropCollections(this.mongoose);
-		this.server.close();
-	});
+  afterEach(async () => {
+    await dropCollections(this.mongoose);
+    this.server.close();
+  });
 
-	afterAll(async () => {
-		await this.mongoose.disconnect();
-	});
+  afterAll(async () => {
+    await this.mongoose.disconnect();
+  });
 
-	it('api test', async () => {
-		expect(true).toEqual(true);
-	});
+  it('api test', async () => {
+    expect(true).toEqual(true);
+  });
 });
