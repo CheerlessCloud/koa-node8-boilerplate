@@ -16,8 +16,12 @@
     "koa2",
     "flexible",
     "nodejs",
+    "mongoose",
+    "microservice",
+    "api",
     "node",
-    "node8"
+    "node8",
+    "node10"
   ],
   "scripts": {
     "prebuild": "rimraf ./dist",
@@ -35,21 +39,24 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "bunyan": "^1.8.12",
+    "config": "2.0.1",
     "cross-env": "^5.1.0",
+    "dotenv": "6.1.0",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
-    "twconf": "^0.7.1"
+    "mongoose": "5.3.10"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "morgan": "^1.9.1",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
     "@babel/register": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "bunyan-debug-stream": "^2.0.0",
+    "bunyan-stdout-stream": "^1.5.2",
     "coveralls": "^3.0.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -58,11 +65,12 @@
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
+    "jest-environment-node": "^23.4.0",
     "lint-staged": "^7.3.0",
+    "mongodb-memory-server": "^2.8.0",
     "nodemon": "^1.14.11",
-    "prettier": "^1.14.3",
+    "prettier": "^1.15.3",
     "rimraf": "^2.6.2",
-    "semantic-release": "^15.9.17",
     "supertest": "^3.0.0"
   },
   "engines": {
@@ -79,43 +87,11 @@
     ],
     "delay": "1000"
   },
-  "release": {
-    "analyzeCommits": {
-      "preset": "angular",
-      "releaseRules": [
-        {
-          "type": "feat",
-          "release": "minor"
-        },
-        {
-          "type": "fix",
-          "release": "patch"
-        },
-        {
-          "type": "docs",
-          "scope": "/readme/",
-          "release": "patch"
-        },
-        {
-          "type": "perf",
-          "release": "patch"
-        },
-        {
-          "type": "build",
-          "release": "patch"
-        }
-      ],
-      "parserOpts": {
-        "noteKeywords": [
-          "BREAKING CHANGE",
-          "BREAKING CHANGES"
-        ]
-      }
-    }
-  },
   "lint-staged": {
-    "*.{js}": [
-      "eslint"
+    "src/**/*.{js,json,md}": [
+      "eslint --fix --ignore-path .gitignore",
+      "prettier --write",
+      "git add"
     ]
   },
   "husky": {

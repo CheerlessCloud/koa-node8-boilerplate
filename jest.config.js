@@ -1,12 +1,12 @@
 module.exports = {
   moduleFileExtensions: ['js', 'json'],
-  rootDir: 'src',
-  testRegex: '.spec.js$',
+  rootDir: '.',
+  testRegex: '.(test|spec).js$',
   transform: {
     '^.+\\.js?$': 'babel-jest',
   },
-  coverageDirectory: '../coverage',
-  testEnvironment: 'node',
+  coverageDirectory: './coverage',
+  testEnvironment: './jest/IntegrationEnvironment.js',
   notifyMode: 'change',
   coveragePathIgnorePatterns: ['src/http-server.js'],
 };

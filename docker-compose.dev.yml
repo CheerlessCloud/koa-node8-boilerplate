@@ -1,0 +1,41 @@
+version: '2.2'
+
+x-default-logging:
+  &default-logging
+  driver: json-file
+  options:
+    max-size: '5m'
+    max-file: '1'
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:4.0
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-net
+    logging:
+      driver: none
+    restart: on-failure
+  app:
+    image: node:10.13
+    command: ["npm", "run", "start:dev"]
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app:cached
+    restart: on-failure
+    networks:
+      - app-net
+    env_file:
+      - .env
+    logging: *default-logging
+
+volumes:
+  mongo-data:
+
+networks:
+  app-net:
+    external: true

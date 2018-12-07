@@ -28,6 +28,7 @@ notifications:
 before_script:
   - npm prune
 script:
+  - cp ./.env.default ./.env
   - npm run test:cover
   - npm run build
 after_success:

@@ -1,31 +1,27 @@
-import { resolve } from 'path';
 import bunyan from 'bunyan';
-import config from '../../config';
+import config from 'config';
 
 const streams = [];
 
-if (!config.get('isProduction')) {
+if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line global-require, import/no-extraneous-dependencies
-  const bunyanDebugStream = require('bunyan-debug-stream');
+  const StdoutStream = require('bunyan-stdout-stream').default;
   streams.push({
     level: 'trace',
     type: 'raw',
-    stream: bunyanDebugStream({
-      basepath: resolve('./../../.'),
-      forceColor: true,
-    }),
+    stream: new StdoutStream({ maxDepth: 10 }),
   });
 } else {
   streams.push({
-    level: config.get('loggerLevel'),
+    level: config.get('logger.level'),
     stream: process.stdout,
   });
 }
 
 const logger = bunyan.createLogger({
   streams,
-  name: config.get('loggerName'),
-  level: config.get('loggerLevel'),
+  name: config.get('logger.name'),
+  level: config.get('logger.level'),
   serializers: {
     req: bunyan.stdSerializers.req,
     res: bunyan.stdSerializers.res,
