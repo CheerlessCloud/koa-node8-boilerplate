@@ -4,9 +4,10 @@ module.exports = {
   plugins: ['prettier'],
   parser: 'babel-eslint',
   parserOptions: {
+    ecmaVersion: 9,
     sourceType: 'module',
     allowImportExportEverywhere: false,
-    codeFrame: false,
+    codeFrame: true,
   },
 
   env: {
@@ -14,8 +15,6 @@ module.exports = {
   },
   rules: {
     strict: 'error',
-    'no-param-reassign': 'off',
-    'no-underscore-dangle': 'off',
     'no-restricted-syntax': 'off',
     'class-methods-use-this': 'off',
     'prettier/prettier': 'error',
