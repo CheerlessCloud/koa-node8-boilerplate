@@ -23,9 +23,9 @@ services:
   app:
     image: node:10.13
     command: ["npm", "run", "start:dev"]
-    working_dir: /home/www
+    working_dir: /usr/src/app
     volumes:
-      - .:/home/www:cached
+      - .:/usr/src/app:cached
     restart: on-failure
     networks:
       - app-net
