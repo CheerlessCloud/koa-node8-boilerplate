@@ -53,6 +53,9 @@ typings/
 # compiled code from babel
 dist
 
+# MacOS system file
+.DS_Store
+
 # WebStorm IDE
 .idea/
 
