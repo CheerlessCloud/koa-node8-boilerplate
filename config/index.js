@@ -3,7 +3,7 @@ import TwConf from 'twconf';
 
 const config = new TwConf({
   nodeEnv: {
-    comment: 'Enviroment type',
+    comment: 'Environment type',
     type: {
       name: 'string',
       allowed: ['development', 'test', 'production'],
@@ -37,6 +37,14 @@ const config = new TwConf({
       max: 65535,
     },
     default: 3000,
+  },
+  gracefulStopTimeout: {
+    comment: 'A timeout in milliseconds that limits the time for graceful server shutdown',
+    type: {
+      name: 'int',
+      min: 0,
+    },
+    default: 10000,
   },
 });
 
