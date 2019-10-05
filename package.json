@@ -37,6 +37,7 @@
     "bunyan": "^1.8.12",
     "core-js": "3",
     "cross-env": "^6.0.3",
+    "http-shutdown": "^1.2.1",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
