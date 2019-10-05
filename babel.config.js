@@ -8,6 +8,7 @@ module.exports = {
           node: 'current',
         },
         useBuiltIns: 'usage',
+        corejs: '3',
         shippedProposals: true,
         loose: false,
       },
