@@ -1,5 +1,7 @@
 import request from 'supertest';
-import httpServer from '../http-server';
+import httpServer from '../server';
+
+jest.mock('../../libs/logger');
 
 describe('Base HTTP routes', () => {
   let server = httpServer;
@@ -31,16 +33,23 @@ describe('Base HTTP routes', () => {
     expect(res.status).toBe(404);
   });
 
-  test('check server response for throw error path', async () => {
-    expect.assertions(2);
+  test('check server response for throw 400 error path', async () => {
+    expect.assertions(3);
+
+    const res = await request(server).get('/throw-error-400');
+
+    expect(res.type).toBe('text/plain');
+    expect(res.status).toBe(400);
+    expect(res.res.text).toBe('name required');
+  });
+
+  test('check server response for throw 500 error path', async () => {
+    expect.assertions(3);
 
     const res = await request(server).get('/throw-error');
 
     expect(res.type).toBe('text/plain');
-    expect(res.status).toBe(400);
-  });
-
-  afterAll(() => {
-    server.close();
+    expect(res.status).toBe(500);
+    expect(res.res.text).toBe('Internal Server Error');
   });
 });
