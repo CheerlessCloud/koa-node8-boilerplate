@@ -41,6 +41,7 @@
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
+    "pino": "^5.13.4",
     "twconf": "^0.7.1"
   },
   "devDependencies": {
